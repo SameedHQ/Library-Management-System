@@ -1,0 +1,142 @@
+{
+	"info": {
+		"_postman_id": "506c5aa5-a172-4f9f-b8fd-0c79f5e1d5c8",
+		"name": "Library Management System",
+		"description": "Postman collection for the Library Management System API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "13774018"
+	},
+	"item": [
+		{
+			"name": "Register a New Borrower",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"john.doe@example.com\",\n  \"name\": \"John Doe\"\n}"
+				},
+				"url": "{{base_url}}/api/borrowers"
+			},
+			"response": []
+		},
+		{
+			"name": "Register a New Book",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"isbn\": \"1234567890\",\n  \"title\": \"Sample Book\",\n  \"author\": \"Sample Author\"\n}"
+				},
+				"url": "{{base_url}}/api/books"
+			},
+			"response": []
+		},
+		{
+			"name": "List All Books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{base_url}}/api/books"
+			},
+			"response": []
+		},
+		{
+			"name": "Borrow a Book",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"borrowerId\": {{borrower_id}},\n  \"bookId\": {{book_id}}\n}"
+				},
+				"url": "{{base_url}}/api/borrowers/{{borrower_id}}/borrow/{{book_id}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Return a Book",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": "{{base_url}}/api/borrowers/{{borrower_id}}/return/{{book_id}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Borrower Details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{base_url}}/api/borrowers/{{borrower_id}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Book Details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{base_url}}/api/books/{{book_id}}"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8090"
+		},
+		{
+			"key": "borrower_id",
+			"value": "1"
+		},
+		{
+			"key": "book_id",
+			"value": "1"
+		}
+	]
+}
